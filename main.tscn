@@ -7,7 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://cvqmpnv33inha" path="res://themes/wk_h_box.tres" id="6_ycdy4"]
 [ext_resource type="StyleBox" uid="uid://b4etcrxsxkrrs" path="res://themes/wk_n_box.tres" id="7_w48qg"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="8_5vw27"]
-[ext_resource type="Script" uid="uid://dms4hms3l2cst" path="res://FPSCounter.cs" id="8_kek77"]
+[ext_resource type="Script" uid="uid://dms4hms3l2cst" path="res://scripts/FPSCounter.cs" id="8_kek77"]
 
 [sub_resource type="Environment" id="Environment_272bh"]
 background_mode = 3
