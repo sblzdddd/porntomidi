@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bjvrguq7syldk"]
+
+[ext_resource type="Theme" uid="uid://ceyuyvm70hx7" path="res://themes/wk_theme.tres" id="1_gqaf4"]
+[ext_resource type="Script" uid="uid://iccf8v4r6qkp" path="res://scripts/key_button.gd" id="2_wc646"]
+
+[node name="Key" type="Button" unique_id=137293146 node_paths=PackedStringArray("label")]
+offset_right = 28.0
+offset_bottom = 123.0
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("1_gqaf4")
+toggle_mode = true
+action_mode = 0
+script = ExtResource("2_wc646")
+label = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=927743501]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.90909094
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+bbcode_enabled = true
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

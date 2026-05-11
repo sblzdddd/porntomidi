@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dupmh03c327dv"]
+
+[sub_resource type="Gradient" id="Gradient_ajhvj"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.048333332)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_unusj"]
+gradient = SubResource("Gradient_ajhvj")
+fill = 1
+fill_from = Vector2(0.48034188, 0.52820516)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Curve" id="Curve_5vw27"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.22661874, 1), 0.0, 0.0, 0, 0, Vector2(0.5395684, 0.6697714), -1.4733897, -1.4733897, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_kek77"]
+curve = SubResource("Curve_5vw27")
+
+[sub_resource type="Gradient" id="Gradient_unusj"]
+offsets = PackedFloat32Array(0.70816326, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.3172787, 0.31727865, 0.31727865, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qjlwr"]
+gradient = SubResource("Gradient_unusj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5vw27"]
+lifetime_randomness = 0.71
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(13.015, 1, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 289.22998
+initial_velocity_max = 526.14996
+gravity = Vector3(0, -500, 0)
+scale_min = 0.7
+scale_max = 1.1999999
+color = Color(0.7296342, 2.0139656, 2.0139656, 1)
+color_ramp = SubResource("GradientTexture1D_qjlwr")
+alpha_curve = SubResource("CurveTexture_kek77")
+turbulence_enabled = true
+turbulence_noise_strength = 5.0
+
+[node name="PlayParticle" type="GPUParticles2D" unique_id=95174164]
+amount = 64
+texture = SubResource("GradientTexture2D_unusj")
+lifetime = 1.84
+process_material = SubResource("ParticleProcessMaterial_5vw27")

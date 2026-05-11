@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://dmauo7rw6ubb1"]
+
+[ext_resource type="Script" uid="uid://bv6ddwgju2kco" path="res://scripts/waterfalls_pool.gd" id="2_kek77"]
+[ext_resource type="Script" uid="uid://qgxct1kkx1u8" path="res://scripts/keys_manager.gd" id="3_4c57u"]
+[ext_resource type="StyleBox" uid="uid://bxydrrsljkx77" path="res://themes/bk_h_box.tres" id="4_efxa6"]
+[ext_resource type="StyleBox" uid="uid://cf31vhmj11hjk" path="res://themes/bk_n_box.tres" id="5_dg77c"]
+[ext_resource type="StyleBox" uid="uid://cvqmpnv33inha" path="res://themes/wk_h_box.tres" id="6_ycdy4"]
+[ext_resource type="StyleBox" uid="uid://b4etcrxsxkrrs" path="res://themes/wk_n_box.tres" id="7_w48qg"]
+[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://dms4hms3l2cst" path="res://FPSCounter.cs" id="8_kek77"]
+
+[sub_resource type="Environment" id="Environment_272bh"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 3.87
+glow_strength = 0.61
+glow_bloom = 0.33
+glow_hdr_threshold = 2.31
+
+[node name="Control" type="Control" unique_id=1466886098]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Environment" type="WorldEnvironment" parent="." unique_id=1552681905]
+environment = SubResource("Environment_272bh")
+
+[node name="Background" type="ColorRect" parent="." unique_id=377767046]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07444572, 0.07444573, 0.07444573, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ViewRoot" type="VBoxContainer" parent="." unique_id=700972810]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="WaterfallRoot" type="Control" parent="ViewRoot" unique_id=2003442266]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.0
+script = ExtResource("2_kek77")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="ViewRoot/WaterfallRoot" unique_id=698036875]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+border_color = Color(1, 0.56666666, 0, 1)
+border_width = 5.0
+metadata/_edit_use_anchors_ = true
+
+[node name="KeysRoot" type="Control" parent="ViewRoot" unique_id=1996132613 node_paths=PackedStringArray("white_keys_root", "black_keys_root")]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("3_4c57u")
+white_keys_root = NodePath("WKs")
+black_keys_root = NodePath("BKs")
+box_styles = Array[StyleBoxFlat]([ExtResource("4_efxa6"), ExtResource("5_dg77c"), ExtResource("6_ycdy4"), ExtResource("7_w48qg")])
+metadata/_edit_use_anchors_ = true
+
+[node name="WKs" type="HBoxContainer" parent="ViewRoot/KeysRoot" unique_id=1825996064]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ReferenceRect" type="ReferenceRect" parent="ViewRoot/KeysRoot/WKs" unique_id=605703147]
+layout_mode = 2
+size_flags_horizontal = 3
+border_color = Color(3.85046e-06, 0.7670564, 0.7714911, 1)
+border_width = 3.4
+
+[node name="BKs" type="HBoxContainer" parent="ViewRoot/KeysRoot" unique_id=1866932284]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.58666664
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="ReferenceRect" type="ReferenceRect" parent="ViewRoot/KeysRoot/BKs" unique_id=1311307259]
+layout_mode = 2
+size_flags_horizontal = 3
+border_color = Color(0.85303664, 0.0007949275, 0.8887131, 1)
+border_width = 3.3
+
+[node name="MidiPlayer" parent="." unique_id=541734357 instance=ExtResource("8_5vw27")]
+max_polyphony = 128
+file = "res://ScarletZone 黑乐谱.mid"
+volume_db = -5.0
+soundfont = "res://gm.sf2"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2065386854]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 112.0
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1453509950]
+layout_mode = 2
+text = "FPS: 0"
+script = ExtResource("8_kek77")
