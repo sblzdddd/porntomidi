@@ -14,7 +14,7 @@ var keys_count: int = 88:
 		keys_count = value
 		config_changed.emit(true)
 
-var waterfall_speed: float = 1.0:
+var waterfall_speed: float = 6.0:
 	set(value):
 		if waterfall_speed == value: return
 		waterfall_speed = value
@@ -33,20 +33,20 @@ var key_coords: Array[Vector2] = []:
 		config_changed.emit(false)
 
 var instrument_palette: Array[Color] = [
-	Color("f94144"),
-	Color("f3722c"),
-	Color("f9c74f"),
-	Color("90be6d"),
-	Color("43aa8b"),
-	Color("577590"),
-	Color("9b5de5")
+	Color("fd615eff"),
+	Color("fb8d5aff"),
+	Color("f5c141ff"),
+	Color("62b400ff"),
+	Color("00c09bff"),
+	Color("009ffeff"),
+	Color("b17effff")
 ]:
 	set(value):
 		if instrument_palette == value: return
 		instrument_palette = value
 		config_changed.emit(false)
 
-var play_particle_max_count: int = 88:
+var play_particle_max_count: int = 40:
 	set(value):
 		value = max(value, 0)
 		if play_particle_max_count == value: return

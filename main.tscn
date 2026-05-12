@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://dmauo7rw6ubb1"]
 
-[ext_resource type="Script" uid="uid://bv6ddwgju2kco" path="res://scripts/waterfalls_pool.gd" id="2_kek77"]
-[ext_resource type="Script" uid="uid://qgxct1kkx1u8" path="res://scripts/keys_manager.gd" id="3_4c57u"]
-[ext_resource type="StyleBox" uid="uid://bxydrrsljkx77" path="res://themes/bk_h_box.tres" id="4_efxa6"]
-[ext_resource type="StyleBox" uid="uid://cf31vhmj11hjk" path="res://themes/bk_n_box.tres" id="5_dg77c"]
-[ext_resource type="StyleBox" uid="uid://cvqmpnv33inha" path="res://themes/wk_h_box.tres" id="6_ycdy4"]
-[ext_resource type="StyleBox" uid="uid://b4etcrxsxkrrs" path="res://themes/wk_n_box.tres" id="7_w48qg"]
+[ext_resource type="Script" uid="uid://bv6ddwgju2kco" path="res://scripts/waterfall/waterfalls_pool.gd" id="2_kek77"]
+[ext_resource type="Script" uid="uid://qgxct1kkx1u8" path="res://scripts/piano/keys_manager.gd" id="3_4c57u"]
+[ext_resource type="PackedScene" uid="uid://bjvrguq7syldk" path="res://prefabs/key.tscn" id="3_efxa6"]
+[ext_resource type="Theme" uid="uid://ceyuyvm70hx7" path="res://themes/pianoroll/wk_theme.tres" id="4_dg77c"]
+[ext_resource type="StyleBox" uid="uid://bxydrrsljkx77" path="res://themes/pianoroll/bk_h_box.tres" id="4_efxa6"]
+[ext_resource type="StyleBox" uid="uid://cf31vhmj11hjk" path="res://themes/pianoroll/bk_n_box.tres" id="5_dg77c"]
+[ext_resource type="Theme" uid="uid://dsrltj3t01dg6" path="res://themes/pianoroll/bk_theme.tres" id="5_ycdy4"]
+[ext_resource type="StyleBox" uid="uid://cvqmpnv33inha" path="res://themes/pianoroll/wk_h_box.tres" id="6_ycdy4"]
+[ext_resource type="StyleBox" uid="uid://b4etcrxsxkrrs" path="res://themes/pianoroll/wk_n_box.tres" id="7_w48qg"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="8_5vw27"]
-[ext_resource type="Script" uid="uid://dms4hms3l2cst" path="res://scripts/FPSCounter.cs" id="8_kek77"]
+[ext_resource type="Script" uid="uid://vgsnf30t52g2" path="res://scripts/utils/status_text_display.gd" id="9_status"]
 
 [sub_resource type="Environment" id="Environment_272bh"]
 background_mode = 3
@@ -71,8 +74,11 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("3_4c57u")
+key_prefab = ExtResource("3_efxa6")
 white_keys_root = NodePath("WKs")
 black_keys_root = NodePath("BKs")
+white_keys_theme = ExtResource("4_dg77c")
+black_keys_theme = ExtResource("5_ycdy4")
 box_styles = Array[StyleBoxFlat]([ExtResource("4_efxa6"), ExtResource("5_dg77c"), ExtResource("6_ycdy4"), ExtResource("7_w48qg")])
 metadata/_edit_use_anchors_ = true
 
@@ -111,15 +117,31 @@ border_width = 3.3
 [node name="MidiPlayer" parent="." unique_id=541734357 instance=ExtResource("8_5vw27")]
 max_polyphony = 128
 file = "res://ScarletZone 黑乐谱.mid"
+playing = true
 volume_db = -5.0
 soundfont = "res://gm.sf2"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2065386854]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 112.0
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1487031779]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.021296296
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=1453509950]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=2065386854]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FPS" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1453509950]
 layout_mode = 2
 text = "FPS: 0"
-script = ExtResource("8_kek77")
+script = ExtResource("9_status")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=1551837188]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer2" unique_id=996246290]
+layout_mode = 2
+text = "AAAAA"
