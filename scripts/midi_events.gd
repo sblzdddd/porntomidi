@@ -1,6 +1,5 @@
 extends Node
 
-# Define your global signals here
 signal midi_input(event: InputEventMIDI)
 signal control_change(id: int, value: int)
 signal note_on_channel(channel: int, pitch: int, velocity: int)
@@ -8,6 +7,12 @@ signal note_off_channel(channel: int, pitch: int)
 signal control_change_channel(channel: int, id: int, value: int)
 signal program_change(channel: int, instrument: int)
 signal pitch_bend(channel: int, value: int)
+@warning_ignore("unused_signal")
+signal playback_seeked(position: float)
+@warning_ignore("unused_signal")
+signal playback_paused
+@warning_ignore("unused_signal")
+signal midi_file_loaded(path: String)
 
 func _ready():
 	OS.open_midi_inputs()

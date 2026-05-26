@@ -21,6 +21,7 @@ func _ready() -> void:
 	PianoConfig.config_changed.connect(rebuild)
 	MidiEvents.note_on_channel.connect(on_note_on_channel)
 	MidiEvents.note_off_channel.connect(on_note_off_channel)
+	MidiEvents.playback_paused.connect(clear_all_keys)
 	midi_player = get_node_or_null("../../MidiPlayer")
 	if midi_player != null:
 		midi_player.playback_note_on.connect(on_playback_note_on)
@@ -114,3 +115,10 @@ func _set_key_active_for_channel(pitch: int, active: bool, channel: int = -1) ->
 		key_active_channels[pitch] = active_channels
 		var tint: Color = ChannelColorAllocator.get_color(active_channels[active_channels.size() - 1])
 		keys[pitch - PianoConfig.start_pitch].midi_set(true, tint)
+
+func clear_all_keys() -> void:
+	for pitch in key_active_channels.keys():
+		var key_index: int = pitch - PianoConfig.start_pitch
+		if key_index >= 0 and key_index < keys.size():
+			keys[key_index].midi_set(false)
+	key_active_channels.clear()

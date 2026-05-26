@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dmauo7rw6ubb1"]
 
-[ext_resource type="Script" uid="uid://bv6ddwgju2kco" path="res://scripts/waterfall/waterfalls_pool.gd" id="2_kek77"]
+[ext_resource type="Script" uid="uid://cwpdms7ogb1sx" path="res://scripts/waterfall/playback_pool.gd" id="2_yaehf"]
 [ext_resource type="Script" uid="uid://qgxct1kkx1u8" path="res://scripts/piano/keys_manager.gd" id="3_4c57u"]
+[ext_resource type="Script" uid="uid://bvpipkpyxj27" path="res://scripts/waterfall/live_pool.gd" id="3_074og"]
 [ext_resource type="PackedScene" uid="uid://bjvrguq7syldk" path="res://prefabs/key.tscn" id="3_efxa6"]
 [ext_resource type="Theme" uid="uid://ceyuyvm70hx7" path="res://themes/pianoroll/wk_theme.tres" id="4_dg77c"]
 [ext_resource type="StyleBox" uid="uid://bxydrrsljkx77" path="res://themes/pianoroll/bk_h_box.tres" id="4_efxa6"]
@@ -11,15 +12,16 @@
 [ext_resource type="StyleBox" uid="uid://b4etcrxsxkrrs" path="res://themes/pianoroll/wk_n_box.tres" id="7_w48qg"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://vgsnf30t52g2" path="res://scripts/utils/status_text_display.gd" id="9_status"]
+[ext_resource type="Theme" uid="uid://chgsk4jnt63we" path="res://themes/ui_theme.tres" id="12_dg77c"]
+[ext_resource type="Texture2D" uid="uid://mpqsfgsg4io2" path="res://textures/MaterialSymbolsPause.svg" id="13_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://bxgfywpeilei8" path="res://textures/material-symbols--stop-rounded.svg" id="14_vivmo"]
+[ext_resource type="Texture2D" uid="uid://dppertucfw18j" path="res://textures/MaterialSymbolsUploadFileRounded.svg" id="14_w48qg"]
+[ext_resource type="Texture2D" uid="uid://dpuyc2qf33qhf" path="res://textures/material-symbols--display-settings-outline-rounded.svg" id="16_2cqfq"]
+[ext_resource type="Script" uid="uid://bmtw6lu6e6vml" path="res://scripts/playback_controls.gd" id="17_playback"]
+[ext_resource type="Script" uid="uid://cccqgs0xq7yav" path="res://scripts/open_midi_file.gd" id="18_omfile"]
 
-[sub_resource type="Environment" id="Environment_272bh"]
-background_mode = 3
-glow_enabled = true
-glow_normalized = true
-glow_intensity = 3.87
-glow_strength = 0.61
-glow_bloom = 0.33
-glow_hdr_threshold = 2.31
+[sub_resource type="LabelSettings" id="LabelSettings_2cqfq"]
+font_size = 12
 
 [node name="Control" type="Control" unique_id=1466886098]
 layout_mode = 3
@@ -28,9 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Environment" type="WorldEnvironment" parent="." unique_id=1552681905]
-environment = SubResource("Environment_272bh")
+script = ExtResource("17_playback")
 
 [node name="Background" type="ColorRect" parent="." unique_id=377767046]
 layout_mode = 1
@@ -57,7 +57,6 @@ clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 7.0
-script = ExtResource("2_kek77")
 
 [node name="ReferenceRect" type="ReferenceRect" parent="ViewRoot/WaterfallRoot" unique_id=698036875]
 layout_mode = 1
@@ -68,6 +67,32 @@ grow_horizontal = 2
 grow_vertical = 2
 border_color = Color(1, 0.56666666, 0, 1)
 border_width = 5.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PlaybackPool" type="Control" parent="ViewRoot/WaterfallRoot" unique_id=2011870508]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.0
+script = ExtResource("2_yaehf")
+metadata/_edit_use_anchors_ = true
+
+[node name="LivePool" type="Control" parent="ViewRoot/WaterfallRoot" unique_id=529235660]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.0
+script = ExtResource("3_074og")
 metadata/_edit_use_anchors_ = true
 
 [node name="KeysRoot" type="Control" parent="ViewRoot" unique_id=1996132613 node_paths=PackedStringArray("white_keys_root", "black_keys_root")]
@@ -116,32 +141,115 @@ border_width = 3.3
 
 [node name="MidiPlayer" parent="." unique_id=541734357 instance=ExtResource("8_5vw27")]
 max_polyphony = 128
-file = "res://ScarletZone 黑乐谱.mid"
+file = "res://最も澄みわたる空と海.mid"
 playing = true
 volume_db = -5.0
 soundfont = "res://gm.sf2"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1487031779]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=969637256]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 0.021296296
+anchor_bottom = 0.06666667
 grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=2065386854]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=899369319]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 1
 
-[node name="FPS" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1453509950]
+[node name="Status" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1453509950]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "FPS: 0"
+label_settings = SubResource("LabelSettings_2cqfq")
 script = ExtResource("9_status")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=1551837188]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=2023254990]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.1
+theme_override_constants/separation = 20
 
-[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer2" unique_id=996246290]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=153060044]
 layout_mode = 2
-text = "AAAAA"
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 7.64
+alignment = 1
+
+[node name="ProgressSlider" type="HSlider" parent="MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer" unique_id=1181438554]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+size_flags_stretch_ratio = 6.8
+theme = ExtResource("12_dg77c")
+
+[node name="TimeDisplay" type="HBoxContainer" parent="MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer" unique_id=1148800160]
+layout_mode = 2
+
+[node name="TimeElapsed" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer/TimeDisplay" unique_id=2132214281]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0:00"
+
+[node name="TimeRemaining" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer/TimeDisplay" unique_id=663795968]
+layout_mode = 2
+text = "0:00"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=271116786]
+layout_mode = 2
+
+[node name="PlayPause" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer/HBoxContainer" unique_id=996246290]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_dg77c")
+icon = ExtResource("13_ycdy4")
+icon_alignment = 1
+
+[node name="Stop" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer/HBoxContainer" unique_id=85714152]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_dg77c")
+icon = ExtResource("14_vivmo")
+icon_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1126003676]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="OpenMidiFile" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer2" unique_id=406123011 node_paths=PackedStringArray("midi_player", "file_dialog")]
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_dg77c")
+icon = ExtResource("14_w48qg")
+icon_alignment = 1
+script = ExtResource("18_omfile")
+midi_player = NodePath("../../../../MidiPlayer")
+file_dialog = NodePath("../../../../FileDialog")
+
+[node name="Settings" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer2" unique_id=673412036]
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_dg77c")
+icon = ExtResource("16_2cqfq")
+icon_alignment = 1
+
+[node name="FileDialog" type="FileDialog" parent="." unique_id=192523730]
+title = "Open a File"
+size = Vector2i(640, 480)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.mid, *.midi ; MIDI Files")
+use_native_dialog = true

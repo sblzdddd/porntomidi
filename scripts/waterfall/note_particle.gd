@@ -21,7 +21,8 @@ func set_tint(tint: Color) -> void:
 	_tint = tint
 	_apply_particle_tint()
 
-func update(note_owner: Node, note_is_on: bool, pos_x: float, size_x: float, pool_base: float, max_particles: int) -> void:
+func update(note_owner: Node, note_is_on: bool, pos_x: float, size_x: float, pool_base: float) -> void:
+	var max_particles: int = PianoConfig.play_particle_max_count
 	if max_particles == 0:
 		return
 	if note_is_on and _particle == null:

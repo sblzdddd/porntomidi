@@ -38,6 +38,10 @@ window/stretch/aspect="expand"
 
 project/assembly_name="PorntoMidi"
 
+[editor]
+
+movie_writer/movie_file="/home/lc-022/Desktop/porntomidi/111.avi"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

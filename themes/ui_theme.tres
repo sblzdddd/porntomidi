@@ -1,0 +1,59 @@
+[gd_resource type="Theme" format=3 uid="uid://chgsk4jnt63we"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg77c"]
+bg_color = Color(0.3349307, 0.75331855, 0.9999998, 1)
+border_width_bottom = 6
+border_color = Color(0, 0.4748183, 0.683773, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.4862745)
+shadow_size = 6
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_efxa6"]
+bg_color = Color(0, 0.65086097, 0.92795795, 1)
+border_width_bottom = 6
+border_color = Color(0, 0.4748183, 0.683773, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.43529412)
+shadow_size = 6
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycdy4"]
+bg_color = Color(2.2621452e-06, 0.43547994, 0.62892014, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0.61249995, 0.75, 0.3529412)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgyi5"]
+bg_color = Color(0, 0.6509804, 0.92941177, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxbg1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfhtu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.26, 0.26, 0.26, 0.6)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxFlat_dg77c")
+Button/styles/normal = SubResource("StyleBoxFlat_efxa6")
+Button/styles/pressed = SubResource("StyleBoxFlat_ycdy4")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_pgyi5")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_xxbg1")
+HSlider/styles/slider = SubResource("StyleBoxFlat_gfhtu")

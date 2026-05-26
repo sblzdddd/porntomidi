@@ -1,6 +1,6 @@
 extends Label
 
-@export var waterfall_root_path: NodePath = NodePath("../../../ViewRoot/WaterfallRoot")
+@export var waterfall_root_path: NodePath = NodePath("../../../ViewRoot/WaterfallRoot/PlaybackPool")
 @export var poll_interval_sec: float = 0.1
 
 var _waterfall_root: Node = null

@@ -46,7 +46,7 @@ var instrument_palette: Array[Color] = [
 		instrument_palette = value
 		config_changed.emit(false)
 
-var play_particle_max_count: int = 40:
+var play_particle_max_count: int = 88:
 	set(value):
 		value = max(value, 0)
 		if play_particle_max_count == value: return

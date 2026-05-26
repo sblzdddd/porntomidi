@@ -23,13 +23,12 @@ func init(set_pitch: int, set_falls_down: bool = false, set_channel_id: int = -1
 	fixed_span = Vector2.ZERO
 	waterfall_span = Vector2.ZERO
 	set_process(true)
-	set_physics_process(true)
 	visible = true
 	_update_settings(false)
-	waterfall_span.x = Time.get_ticks_msec()
 	pitch = set_pitch
 	falls_down = set_falls_down
 	channel_id = set_channel_id
+	waterfall_span.x = _now_ms()
 	if particle_controller == null:
 		particle_controller = NoteParticleController.new(channel_id)
 	else:
@@ -53,11 +52,11 @@ func _update_settings(_force: bool):
 
 func end_note():
 	if ended: return
-	waterfall_span.y = Time.get_ticks_msec()
+	waterfall_span.y = _now_ms()
 	ended = true
 
 func _process(_delta: float) -> void:
-	var time = Time.get_ticks_msec()
+	var time = _now_ms()
 	if !ended: waterfall_span.y = time
 	var pos_x = PianoConfig.key_coords[pitch-PianoConfig.start_pitch].x
 	var size_x = PianoConfig.key_coords[pitch-PianoConfig.start_pitch].y
@@ -84,7 +83,6 @@ func _process(_delta: float) -> void:
 		pos_x,
 		size_x,
 		pool_base,
-		PianoConfig.play_particle_max_count
 	)
 
 	set_position(Vector2(pos_x, pos_y))
@@ -98,6 +96,9 @@ func _is_note_on(time_ms: float) -> bool:
 	if falls_down and fixed_span != Vector2.ZERO:
 		return time_ms >= fixed_span.x and time_ms <= fixed_span.y
 	return not ended
+
+func _now_ms() -> float:
+	return PlaybackClock.now_ms() if falls_down else float(Time.get_ticks_msec())
 
 func _release_and_free() -> void:
 	if _release_callback.is_valid():
@@ -114,7 +115,6 @@ func prepare_for_pool_reuse() -> void:
 	fixed_span = Vector2.ZERO
 	waterfall_span = Vector2.ZERO
 	set_process(false)
-	set_physics_process(false)
 	visible = false
 	if particle_controller != null:
 		particle_controller.stop()
