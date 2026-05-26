@@ -1,8 +1,8 @@
 [gd_resource type="Theme" format=3 uid="uid://dsrltj3t01dg6"]
 
-[ext_resource type="StyleBox" uid="uid://cf31vhmj11hjk" path="res://themes/bk_n_box.tres" id="1_u8km6"]
-[ext_resource type="StyleBox" uid="uid://bxydrrsljkx77" path="res://themes/bk_h_box.tres" id="2_vtjd5"]
-[ext_resource type="StyleBox" uid="uid://cxr8p1qwob401" path="res://themes/wk_a_box.tres" id="3_jccvy"]
+[ext_resource type="StyleBox" uid="uid://cf31vhmj11hjk" path="res://themes/pianoroll/bk_n_box.tres" id="1_u8km6"]
+[ext_resource type="StyleBox" uid="uid://bxydrrsljkx77" path="res://themes/pianoroll/bk_h_box.tres" id="2_vtjd5"]
+[ext_resource type="StyleBox" uid="uid://cxr8p1qwob401" path="res://themes/pianoroll/wk_a_box.tres" id="3_jccvy"]
 
 [resource]
 Button/colors/font_color = Color(0.218061, 0.21806103, 0.21806097, 1)

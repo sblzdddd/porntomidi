@@ -1,5 +1,5 @@
 extends RefCounted
-class_name InstrumentColorAllocator
+class_name ChannelColorAllocator
 
 static var _instrument_slots: Dictionary = {}
 static var _next_slot: int = 0

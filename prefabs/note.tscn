@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://csqwygk71wuv1"]
 
-[ext_resource type="StyleBox" uid="uid://chvygfy8us806" path="res://themes/waterfall_style.tres" id="1_k3rik"]
-[ext_resource type="Script" uid="uid://c6pxaph6xmtoo" path="res://scripts/note.gd" id="2_6jtft"]
+[ext_resource type="StyleBox" uid="uid://chvygfy8us806" path="res://themes/pianoroll/waterfall_style.tres" id="1_k3rik"]
+[ext_resource type="Script" uid="uid://c6pxaph6xmtoo" path="res://scripts/waterfall/note.gd" id="2_6jtft"]
 
 [node name="Note" type="Panel" unique_id=656340999]
 offset_right = 16.0

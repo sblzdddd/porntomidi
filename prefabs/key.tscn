@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bjvrguq7syldk"]
 
-[ext_resource type="Theme" uid="uid://ceyuyvm70hx7" path="res://themes/wk_theme.tres" id="1_gqaf4"]
-[ext_resource type="Script" uid="uid://iccf8v4r6qkp" path="res://scripts/key_button.gd" id="2_wc646"]
+[ext_resource type="Theme" uid="uid://ceyuyvm70hx7" path="res://themes/pianoroll/wk_theme.tres" id="1_gqaf4"]
+[ext_resource type="Script" uid="uid://iccf8v4r6qkp" path="res://scripts/piano/key_button.gd" id="2_wc646"]
 
 [node name="Key" type="Button" unique_id=137293146 node_paths=PackedStringArray("label")]
 offset_right = 28.0

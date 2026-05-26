@@ -12,7 +12,7 @@ config_version=5
 
 config/name="PorntoMidi"
 run/main_scene="uid://dmauo7rw6ubb1"
-config/features=PackedStringArray("4.6", "C#", "Mobile")
+config/features=PackedStringArray("4.7", "Mobile")
 boot_splash/stretch_mode=5
 boot_splash/image="uid://jtdawfnlhquv"
 config/icon="res://settings/icon.svg"
@@ -37,6 +37,10 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="PorntoMidi"
+
+[editor]
+
+movie_writer/movie_file="/home/lc-022/Desktop/porntomidi/111.avi"
 
 [physics]
 
