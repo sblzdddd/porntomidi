@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://qgxct1kkx1u8" path="res://scripts/piano/keys_manager.gd" id="3_4c57u"]
 [ext_resource type="Script" uid="uid://bvpipkpyxj27" path="res://scripts/waterfall/live_pool.gd" id="3_074og"]
 [ext_resource type="PackedScene" uid="uid://bjvrguq7syldk" path="res://prefabs/key.tscn" id="3_efxa6"]
+[ext_resource type="Shader" uid="uid://b07ertm35ctbv" path="res://shaders/piechart.gdshader" id="4_82xsv"]
 [ext_resource type="Theme" uid="uid://ceyuyvm70hx7" path="res://themes/pianoroll/wk_theme.tres" id="4_dg77c"]
 [ext_resource type="StyleBox" uid="uid://bxydrrsljkx77" path="res://themes/pianoroll/bk_h_box.tres" id="4_efxa6"]
 [ext_resource type="StyleBox" uid="uid://cf31vhmj11hjk" path="res://themes/pianoroll/bk_n_box.tres" id="5_dg77c"]
@@ -19,6 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://dpuyc2qf33qhf" path="res://textures/material-symbols--display-settings-outline-rounded.svg" id="16_2cqfq"]
 [ext_resource type="Script" uid="uid://bmtw6lu6e6vml" path="res://scripts/playback_controls.gd" id="17_playback"]
 [ext_resource type="Script" uid="uid://cccqgs0xq7yav" path="res://scripts/open_midi_file.gd" id="18_omfile"]
+[ext_resource type="Script" uid="uid://bivysbouyvuei" path="res://scripts/utils/chord_display.gd" id="19_chord"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cegan"]
+shader = ExtResource("4_82xsv")
+shader_parameter/sector_mask = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_2cqfq"]
 font_size = 12
@@ -95,6 +101,43 @@ size_flags_stretch_ratio = 7.0
 script = ExtResource("3_074og")
 metadata/_edit_use_anchors_ = true
 
+[node name="VBoxContainer" type="VBoxContainer" parent="ViewRoot/WaterfallRoot" unique_id=1934173945]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -298.0
+offset_right = -29.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="ViewRoot/WaterfallRoot/VBoxContainer" unique_id=1084404120]
+layout_mode = 2
+size_flags_vertical = 3
+alignment_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CircleOfFifths" type="ColorRect" parent="ViewRoot/WaterfallRoot/VBoxContainer/AspectRatioContainer" unique_id=126839459]
+material = SubResource("ShaderMaterial_cegan")
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ViewRoot/WaterfallRoot/VBoxContainer/AspectRatioContainer" unique_id=1229173453]
+layout_mode = 2
+alignment = 1
+script = ExtResource("19_chord")
+chord_label_path = NodePath("RichTextLabel")
+circle_of_fifths_path = NodePath("../CircleOfFifths")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ViewRoot/WaterfallRoot/VBoxContainer/AspectRatioContainer/VBoxContainer" unique_id=1772832961]
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=30][color=#aaa]A[/color][/font_size]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="KeysRoot" type="Control" parent="ViewRoot" unique_id=1996132613 node_paths=PackedStringArray("white_keys_root", "black_keys_root")]
 layout_mode = 2
 size_flags_vertical = 3
@@ -141,7 +184,7 @@ border_width = 3.3
 
 [node name="MidiPlayer" parent="." unique_id=541734357 instance=ExtResource("8_5vw27")]
 max_polyphony = 128
-file = "res://最も澄みわたる空と海.mid"
+file = "res://土著的信仰 native faith.mid"
 playing = true
 volume_db = -5.0
 soundfont = "res://gm.sf2"
